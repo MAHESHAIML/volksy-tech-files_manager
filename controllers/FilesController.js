@@ -34,7 +34,7 @@ class FilesController {
     fileParentId = fileParentId === '0' ? 0 : fileParentId;
     if (fileParentId !== 0) {
       const parentFile = await DBClient.db.collection('files').findOne({ _id: ObjectId(fileParentId) });
-      if (!parentFile) return response.status(400).send({ error: 'Parent not found' });
+      if (!pareintFile) return response.status(400).send({ error: 'Parent not found' });
       if (!['folder'].includes(parentFile.type)) return response.status(400).send({ error: 'Parent is not a folder' });
     }
 
@@ -43,7 +43,7 @@ class FilesController {
       name: fileName,
       type: fileType,
       isPublic: fileIsPublic,
-      parentId: fileParentId,
+      parentId,
     };
 
     if (['folder'].includes(fileType)) {
