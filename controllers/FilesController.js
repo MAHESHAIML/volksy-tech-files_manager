@@ -43,7 +43,7 @@ class FilesController {
       name: fileName,
       type: fileType,
       isPublic: fileIsPublic,
-      parentId,
+      fileParentId,
     };
 
     if (['folder'].includes(fileType)) {
